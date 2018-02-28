@@ -1,6 +1,8 @@
 package com.example.demo.Security;
 
 
+import com.example.demo.Model.PledgeItem;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,6 +30,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    @ManyToMany
+    private Collection<PledgeItem> pledgeItems;
+
 
 
     public User(String email, String password, String firstName, String lastName, boolean enabled, String userName) {
@@ -38,6 +43,7 @@ public class User {
         this.enabled = enabled;
         this.userName = userName;
         this.roles= new HashSet<Role>();
+        this.pledgeItems=new HashSet<PledgeItem>();
 
     }
 
@@ -45,6 +51,7 @@ public class User {
 
     public User() {
         this.roles= new HashSet<Role>();
+        this.pledgeItems=new HashSet<PledgeItem>();
 
     }
 
