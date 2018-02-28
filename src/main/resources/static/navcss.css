@@ -1,0 +1,62 @@
+/* Global Styling */
+body, header, nav, main {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #3e606f;
+    font-family: "Helvetica", sans-sarif;
+    font-size: 16px;
+    color: #fcfff5;
+}
+
+header {
+    text-align: center;
+    height: 150px;
+    padding-top: 50px;
+}
+
+
+main {
+    position: relative;
+    height: 1500px;
+    text-align: center;
+    margin-top: 150px;
+}
+
+/* Navbar Styling */
+nav {
+    background: #91aa9d;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: -50px;
+    padding: 5px 0;
+    transition: box-shadow 0.5s ease;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fcfff5;
+    padding: 22px;
+}
+
+nav a:hover {
+    background: green;
+}
+
+/* Sticky Navigation */
+.navScrolled {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0px 1px 5px #000;
+}
