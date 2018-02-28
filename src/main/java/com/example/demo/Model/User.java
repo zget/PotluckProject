@@ -1,7 +1,8 @@
-package com.example.demo.Security;
+package com.example.demo.Model;
 
 
 import com.example.demo.Model.PledgeItem;
+import com.example.demo.Model.Role;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class User {
     private Collection<Role> roles;
 
     @ManyToMany
-    private Collection<PledgeItem> pledgeItems;
+    private Collection<PledgeItem> pledgeitems;
 
 
 
@@ -43,7 +44,7 @@ public class User {
         this.enabled = enabled;
         this.userName = userName;
         this.roles= new HashSet<Role>();
-        this.pledgeItems=new HashSet<PledgeItem>();
+        this.pledgeitems=new HashSet<PledgeItem>();
 
     }
 
@@ -51,11 +52,18 @@ public class User {
 
     public User() {
         this.roles= new HashSet<Role>();
-        this.pledgeItems=new HashSet<PledgeItem>();
+        this.pledgeitems=new HashSet<PledgeItem>();
 
     }
 
 
+    public Collection<PledgeItem> getPledgeitems() {
+        return pledgeitems;
+    }
+
+    public void setPledgeitems(Collection<PledgeItem> pledgeitems) {
+        this.pledgeitems = pledgeitems;
+    }
 
     public long getId() {
         return id;
@@ -123,6 +131,9 @@ public class User {
 
     public void addRole(Role r){
         this.roles.add(r);
+    }
+    public void addItem(PledgeItem p){
+        this.pledgeitems.add(p);
     }
 
 }

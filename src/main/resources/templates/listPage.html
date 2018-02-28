@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="css/listCss.css">
+    <link rel="stylesheet" href="css/tablelist.css">
+
 </head>
 <body>
 
-<table>
+<nav id="topNav">
+    <ul>
+        <li><a href="/login">sign in</a></li>
+        <li><a href="/register">register</a></li>
+        <li><a href="/">home</a></li>
+        <li><a href="/pledgeitem">Pledge Item 4</a></li>
+        <li><a href="/displaypotluckmy">DisplayMy</a></li>
+        <li><a href="/displaypotluckall">DisplayAll</a></li>
+        <li><a th:href="@{/logout}">logout</a></li>
+    </ul>
+</nav>
+
+<table class="zebra">
     <thead>
     <tr>
-        <th>Name</th>
-        <th></th>
-        <th>Weight (kg)</th>
-        <th>Profession</th>
+        <td>ItemName</td>
+        <td>ServeSize</td>
+        <td>ItemType</td>
+        <td>PledgedBy</td>
+
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Carolina Biggleswade</td>
-        <td>23</td>
-        <td>65</td>
-        <td>Jockey</td>
-    </tr>
-    <tr>
-        <td>Harry Sparrowhead</td>
-        <td>34</td>
-        <td>89</td>
-        <td>Trainer</td>
-    </tr>
-    <tr>
-        <td>Marjorie Doors</td>
-        <td>32</td>
-        <td>76</td>
-        <td>Yard Manager</td>
-    </tr>
-    <tr>
-        <td>Earnest Piggington-Smithe</td>
-        <td>18</td>
-        <td>98</td>
-        <td>Groom</td>
+    <tr th:inline="text" th:each="item : ${items}">
+        <td>[[${item.itemname}]]</td>
+        <td>[[${item.servesize}]]</td>
+        <td>[[${item.itemtype}]]</td>
+        <td><div th:each="plu : ${item.pledgingusers}">
+            <span th:inline="text"> [[${plu.firstName}]]<br/></span>
+        </div></td>
+        <td><a th:href="@{/delete/{id}(id=${item.id})}"> Delete item</a></td>
     </tr>
     </tbody>
 </table>
+<!--<h3>potluck</h3>-->
+<!--<div th:each="item : ${items}">-->
+    <!--<span th:inline="text">Item Name: [[${item.itemname}]]<br/></span>-->
+    <!--<span th:inline="text">Serve Size: [[${item.servesize}]]<br /></span>-->
+    <!--<span th:inline="text">Item Type: [[${item.itemtype}]]<br/></span>-->
+
+        <!--<div th:each="plu : ${item.pledgingusers}">-->
+        <!--<span th:inline="text">pl by: [[${plu.firstName}]]<br/></span>-->
+        <!--</div>-->
+    <!--<br/><br/>-->
+<!--</div>-->
+
 
 </body>
 </html>

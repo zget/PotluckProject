@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form
+        action="#"
+        th:action="@{/pledgeitem}"
+        th:object="${item}"
+        method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    Item Name : <input type="text" th:field="*{itemname}" />
+    <span th:if="${#fields.hasErrors('itemname')}"
+          th:errors="*{itemname}"></span><br />
+
+    ServeSize : <input type="number" th:field="*{servesize}" />
+    <span th:if="${#fields.hasErrors('servesize')}"
+          th:errors="*{servesize}"></span><br />
+
+    Item Type : <input type="text" th:field="*{itemtype}" />
+    <span th:if="${#fields.hasErrors('itemtype')}"
+          th:errors="*{itemtype}"></span><br />
+
+    <input type="submit" value="Submit" />
+
+
+
+</form>
+
+</body>
+</html>

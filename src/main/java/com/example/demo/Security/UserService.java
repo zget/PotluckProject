@@ -1,6 +1,9 @@
 package com.example.demo.Security;
 
 
+import com.example.demo.Model.PledgeItem;
+import com.example.demo.Model.User;
+import com.example.demo.Repositories.PledgeRepository;
 import com.example.demo.Repositories.RoleRepository;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,10 @@ public class UserService {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    PledgeRepository pledgeRepository;
+
+
     public UserService(UserRepository userRepository){this.userRepository=userRepository;}
 
 
@@ -35,5 +42,10 @@ public class UserService {
         user.setEnabled(true);
         userRepository.save(user);
     }
+
+//    public User contributor(PledgeItem item){
+//        User cont= pledgeRepository.findByPledgingusers(item);
+//
+//    }
 
 }

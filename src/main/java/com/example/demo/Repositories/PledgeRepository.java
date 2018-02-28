@@ -6,8 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;
 
-public interface UserRepository extends CrudRepository<User, Long> {
-    User findByUserName(String username);
-    Collection<User> findByPledgeitemsIn(Iterable<PledgeItem> item);
+public interface PledgeRepository extends CrudRepository<PledgeItem, Long>{
+
+    PledgeItem findByItemname(String itemname);
+    Collection<PledgeItem> findByPledgingusers(User user);
 
 }

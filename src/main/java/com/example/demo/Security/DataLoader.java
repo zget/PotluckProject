@@ -1,6 +1,10 @@
 package com.example.demo.Security;
 
 
+import com.example.demo.Model.PledgeItem;
+import com.example.demo.Model.Role;
+import com.example.demo.Model.User;
+import com.example.demo.Repositories.PledgeRepository;
 import com.example.demo.Repositories.RoleRepository;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    PledgeRepository pledgeRepository;
 
 
 
@@ -39,6 +46,12 @@ public class DataLoader implements CommandLineRunner {
         myRole= roleRepository.findByRolename("USER");
         user1.addRole(myRole);
         userRepository.save(user2);
+
+        PledgeItem myitem=new PledgeItem("pizza", 6,"food");
+        pledgeRepository.save(myitem);
+        user1.addItem(myitem);
+        userRepository.save(user1);
+
 
 
 
